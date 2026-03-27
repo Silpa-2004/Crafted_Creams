@@ -2,7 +2,7 @@
 const menuData = [
   {
     category: "1️⃣ Classic Ice Cream",
-    image: "assets/category_classic.png",
+    image: "category_classic.png",
     items: [
       { id: 'c1', name: "Vanilla Delight", price: 5.00 },
       { id: 'c2', name: "Chocolate Heaven", price: 5.50 },
@@ -12,7 +12,7 @@ const menuData = [
   },
   {
     category: "2️⃣ Fruit Ice Cream",
-    image: "assets/category_fruit.png",
+    image: "category_fruit.png",
     items: [
       { id: 'f1', name: "Mango Magic", price: 6.50 },
       { id: 'f2', name: "Sitaphal Special", price: 7.00 },
@@ -22,7 +22,7 @@ const menuData = [
   },
   {
     category: "3️⃣ Premium / Dry Fruit Ice Cream",
-    image: "assets/category_premium.png",
+    image: "category_premium.png",
     items: [
       { id: 'p1', name: "Almond Royale", price: 8.00 },
       { id: 'p2', name: "Pistachio Cream", price: 8.50 },
@@ -32,7 +32,7 @@ const menuData = [
   },
   {
     category: "4️⃣ Chocolate Lovers Ice Cream",
-    image: "assets/category_chocolate.png",
+    image: "category_chocolate.png",
     items: [
       { id: 'ch1', name: "Dark Chocolate Truffle", price: 7.50 },
       { id: 'ch2', name: "Chocolate Chip", price: 6.50 },
