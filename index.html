@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crafted Creams | Premium Ice Cream</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Login Overlay -->
+  <div id="login-overlay" class="overlay active">
+    <div class="login-card glass-panel">
+      <h2>Welcome to Crafted Creams</h2>
+      <p>Please enter your details to continue</p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+          <small class="error-msg" id="name-error">Name must be more than 2 characters.</small>
+        </div>
+
+        <div class="form-group row">
+          <div class="code-wrapper">
+            <label for="country_code">Code</label>
+            <select id="country_code">
+              <option value="+91">+91</option>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+            </select>
+          </div>
+          <div class="phone-wrapper">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="10-digit number" required>
+            <small class="error-msg" id="phone-error">Phone number must be exactly 10 digits.</small>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" id="btn-login">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main Application -->
+  <div id="main-app" class="hidden">
+
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="logo">
+        <h1>Crafted Creams</h1>
+      </div>
+      <nav class="nav-links">
+        <button class="nav-item active" data-target="home">Home</button>
+        <button class="nav-item" data-target="menu">Menu</button>
+        <button class="nav-item" data-target="offers">Offers</button>
+        <button class="nav-item" data-target="contact">Contact</button>
+      </nav>
+      <div class="cart-container">
+        <button id="cart-btn" class="cart-btn">
+          <span class="cart-icon">🛒</span>
+          <span id="cart-count">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="content-wrapper">
+
+      <!-- Home Section -->
+      <section id="home" class="view-section active">
+        <div class="hero" style="background-image: url('assets/hero_bg.png');">
+          <div class="hero-overlay">
+            <div class="hero-content text-center">
+              <h2 class="hero-title">Indulgence in Every Scoop</h2>
+              <p class="hero-desc">Experience the finest, handcrafted ice creams made with real, organic
+                ingredients.<br> From classic delights to premium crunches—your perfect dessert awaits.</p>
+              <button class="btn-primary cta-order"
+                onclick="document.querySelector('.nav-item[data-target=\'menu\']').click()">Order Now</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Menu Section -->
+      <section id="menu" class="view-section hidden">
+        <div class="container section-header">
+          <h2>Our Menu</h2>
+          <p>Click on a category to view items</p>
+        </div>
+
+        <div class="container menu-list">
+          <!-- dynamically populated by JS -->
+        </div>
+      </section>
+
+      <!-- Offers Section -->
+      <section id="offers" class="view-section hidden">
+        <div class="container section-header">
+          <h2>Special Offers</h2>
+        </div>
+        <div class="container grid-3">
+          <div class="offer-card">
+            <h3>Student Offer</h3>
+            <p>Show your student ID to get a free topping on any scoop!</p>
+            <div class="badge">Valid Daily</div>
+          </div>
+          <div class="offer-card">
+            <h3>Family Combo Offer</h3>
+            <p>Buy 4 Scoops, Get 1 absolutely FREE. Perfect for sharing!</p>
+            <div class="badge">Weekend Special</div>
+          </div>
+          <div class="offer-card highlight-offer">
+            <h3>Flat 20% Off</h3>
+            <p>Get a flat 20% off on all Premium / Dry Fruit Ice Creams.</p>
+            <div class="badge">Limited Time</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="view-section hidden">
+        <div class="container section-header">
+          <h2>Contact Us</h2>
+        </div>
+        <div class="container contact-content glass-panel">
+          <div class="contact-item">
+            <strong>Address</strong>
+            <p>123 streer, gudur, 516214</p>
+          </div>
+          <div class="contact-item">
+            <strong>Email</strong>
+            <p><a href="mailto:contact@crafircreams.com">contact@crafircreams.com</a></p>
+          </div>
+          <div class="contact-item">
+            <strong>Instagram</strong>
+            <p><a href="https://instagram.com/contact@crafircreams.com" target="_blank">@contact@crafircreams.com</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-box sliding-panel">
+      <div class="modal-header">
+        <h3>Your Cart</h3>
+        <button id="close-cart" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="cart-items">
+        <!-- items injected here -->
+      </div>
+      <div class="modal-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span id="cart-total-price">$0.00</span>
+        </div>
+        <button id="order-btn" class="btn-primary w-100 hidden">Order Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Payment Methods Modal -->
+  <div id="payment-modal" class="modal">
+    <div class="modal-box">
+      <h3>Select Payment Method</h3>
+      <div class="payment-options">
+        <button class="pay-btn" data-method="card">💳 Credit/Debit Card</button>
+        <button class="pay-btn" data-method="upi">📱 UPI</button>
+        <button class="pay-btn" data-method="cash">💵 Cash on Delivery</button>
+      </div>
+      <button id="cancel-order-btn" class="btn-secondary w-100 mt-3">Cancel</button>
+    </div>
+  </div>
+
+  <!-- System Messages (Toast) -->
+  <div id="toast-message" class="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
